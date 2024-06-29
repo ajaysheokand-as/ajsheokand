@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { hartronQuestions } from '@/data/hartronQuestions';
 
 const quizQuestions = hartronQuestions;
-const topics = [...new Set(quizQuestions.map((question) => question.TOPIC))];
+const topics = [...new Set(quizQuestions.map((question: object) => question?.TOPIC))];
 
+console.log("topics=>", topics)
 const Quiz: React.FC = () => {
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [showAnswers, setShowAnswers] = useState<{ [key: number]: boolean }>({});

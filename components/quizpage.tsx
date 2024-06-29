@@ -2,6 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { hartronQuestions } from '@/data/hartronQuestions';
 
+interface QuizPage {
+    answer: object;
+    age: number;
+  }
+
 const QuizPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentTestQuestion, setCurrentTestQuestion] = useState(hartronQuestions.slice(0, 30));
@@ -29,7 +34,7 @@ const QuizPage = () => {
   }
 
   // Function to handle answer selection
-  const handleAnswerSelect = (answer) => {
+  const handleAnswerSelect = (answer: string) => {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = answer;
     setAnswers(newAnswers);
@@ -37,7 +42,7 @@ const QuizPage = () => {
   };
 
   // Function to handle question navigation
-  const handleQuestionNavigation = (index) => {
+  const handleQuestionNavigation = (index: number) => {
     setCurrentQuestion(index);
   };
 
