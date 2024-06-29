@@ -10,7 +10,7 @@ interface QuizPage {
 const QuizPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentTestQuestion, setCurrentTestQuestion] = useState(hartronQuestions.slice(0, 30));
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<string[]>([]);
   const [result, setResult] = useState({score:-1, percentage:""});
   const [showPopup, setShowPopup] = useState(true);
   const [studentDetails, setStudentDetails] = useState({
@@ -20,7 +20,7 @@ const QuizPage = () => {
   });
 
   // Function to handle student details submission
-  const handlePopupSubmit = (e) => {
+  const handlePopupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowPopup(false);
   };

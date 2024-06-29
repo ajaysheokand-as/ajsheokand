@@ -2,11 +2,23 @@
 // pages/quiz.tsx
 import { useState, useEffect } from 'react';
 import { hartronQuestions } from '@/data/hartronQuestions';
+interface QuizQuestion {
+    Questions: string,
+    A: string,
+    B: string,
+    C: string,
+    D: string,
+    Ans: string,
+    TOPIC: string;
+    [key: string]: any;
+}
 
-const quizQuestions = hartronQuestions;
-const topics = [...new Set(quizQuestions.map((question: object) => question?.TOPIC))];
+const quizQuestions: QuizQuestion[] = hartronQuestions;
 
-console.log("topics=>", topics)
+const topics = [...new Set(quizQuestions.map((question: QuizQuestion) => question.TOPIC))];
+
+console.log("topics=>", topics);
+
 const Quiz: React.FC = () => {
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [showAnswers, setShowAnswers] = useState<{ [key: number]: boolean }>({});
