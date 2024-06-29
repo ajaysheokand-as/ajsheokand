@@ -7,11 +7,6 @@ const Home: React.FC = () => {
     <div className="container mx-auto py-12 px-4 md:px-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex items-center justify-center">
-          {/* <img
-            src="https://via.placeholder.com/256x256"
-            alt="Profile Picture"
-            className="w-64 h-64 rounded-full object-cover"
-          /> */}
           <Image
             src="https://via.placeholder.com/256x256"
             alt="Profile Picture"

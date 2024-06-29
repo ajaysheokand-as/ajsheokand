@@ -1,16 +1,22 @@
 // components/Header.tsx
 import React from 'react';
+import Image from 'next/image'
 
 const Header: React.FC = () => {
   return (
     <div className="container mx-auto py-12 px-4 md:px-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex items-center justify-center">
-          <img
+          {/* <img
             src="https://via.placeholder.com/256x256"
             alt="Profile Picture"
             className="w-64 h-64 rounded-full object-cover"
-          />
+          /> */}
+          <Image
+            src="https://via.placeholder.com/256x256"
+            alt="Profile Picture"
+            className="w-64 h-64 rounded-full object-cover"
+            />
         </div>
         <div className="flex flex-col items-start justify-center">
           <h1 className="text-4xl font-bold text-teal-600 mb-4">

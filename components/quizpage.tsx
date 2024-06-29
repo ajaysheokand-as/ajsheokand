@@ -81,7 +81,7 @@ const QuizPage = () => {
         <p>Email: {studentDetails.email}</p>
         <p>Phone No.: {studentDetails.phone}</p>
         </div> */}
-    <div className="min-h-screen flex items-center justify-around">
+    <div className="min-h-screen flex flex-wrap items-center justify-around">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         {showPopup && (
           <div>

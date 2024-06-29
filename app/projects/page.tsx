@@ -1,5 +1,6 @@
 // pages/projects.tsx
 import Link from 'next/link';
+import Image from 'next/image'
 
 const projects = [
   {
@@ -35,11 +36,17 @@ const Projects: React.FC = () => {
           key={index}
           className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300"
         >
-          <img
+          {/* <img
             src={project.imageUrl}
             alt={project.title}
             className="w-full h-48 object-cover"
-          />
+          /> */}
+           <Image
+            src="https://via.placeholder.com/256x256"
+            alt={project.title}
+            className="w-full h-48 object-cover"
+            />
+
           <div className="p-4">
             <h2 className="text-2xl font-bold text-teal-700">{project.title}</h2>
             <p className="mt-2 text-gray-600">{project.description}</p>
