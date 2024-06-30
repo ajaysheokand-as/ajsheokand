@@ -16,6 +16,8 @@ const Header: React.FC = () => {
             src="https://via.placeholder.com/256x256"
             alt="Profile Picture"
             className="w-64 h-64 rounded-full object-cover"
+            width={256}
+            height={256}
             />
         </div>
         <div className="flex flex-col items-start justify-center">

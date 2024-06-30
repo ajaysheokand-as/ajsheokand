@@ -45,6 +45,8 @@ const Projects: React.FC = () => {
             src="https://via.placeholder.com/256x256"
             alt={project.title}
             className="w-full h-48 object-cover"
+            width={600}
+            height={500}
             />
 
           <div className="p-4">
