@@ -8,16 +8,16 @@ import {dummyInvoices} from '../../../data/dummyInvoice'
 
 const Invoices: React.FC = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const [invoices, setInvoices] = useState(dummyInvoices);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const page = searchParams.get('page') || '1';
-    const query = searchParams.get('query') || '';
-    fetchInvoices(parseInt(page), query);
-  }, [searchParams]);
+  // useEffect(() => {
+  //   const page = searchParams.get('page') || '1';
+  //   const query = searchParams.get('query') || '';
+  //   fetchInvoices(parseInt(page), query);
+  // }, [searchParams]);
 
   const fetchInvoices = async (page: number, query: string) => {
     // const response = await fetch(`/api/invoices?page=${page}&query=${query}`);
