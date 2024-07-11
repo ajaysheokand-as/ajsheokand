@@ -1,23 +1,25 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Table from '../../../components/common/table';
 import Pagination from '../../../components/common/pagination';
 import Search from '../../../components/common/search';
 import {dummyInvoices} from '../../../data/dummyInvoice'
+import { Suspense } from 'react';
+
 
 const Invoices: React.FC = () => {
   const router = useRouter();
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const [invoices, setInvoices] = useState(dummyInvoices);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const header = ["S.No.", "Name", "Mobile No.", "No of Ques"]
-  // useEffect(() => {
-  //   const page = searchParams.get('page') || '1';
-  //   const query = searchParams.get('query') || '';
-  //   fetchInvoices(parseInt(page), query);
-  // }, [searchParams]);
+  useEffect(() => {
+    const page = searchParams.get('page') || '1';
+    const query = searchParams.get('query') || '';
+    fetchInvoices(parseInt(page), query);
+  }, [searchParams]);
 
   const fetchInvoices = async (page: number, query: string) => {
     const response = await fetch(`/api/users?page=${page}&query=${query}`);
@@ -37,6 +39,7 @@ const Invoices: React.FC = () => {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="container mx-auto my-8">
       {/* <Search onSearch={handleSearch} /> */}
       <Table
@@ -47,15 +50,16 @@ const Invoices: React.FC = () => {
         onSearch={handleSearch}
         header={header}
       />
-      {/* <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-4">
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
         
-      </div> */}
+      </div>
     </div>
+    </Suspense>
   );
 };
 
