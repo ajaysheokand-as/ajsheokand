@@ -1,12 +1,34 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+interface NavbarProps {
+    showOnPages: string[];
+  }
+
+  const Navbar: React.FC<NavbarProps> = ({ showOnPages }) => {
+    const pathname = usePathname();
+
+   
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  if (!showOnPages.includes(pathname)) {
+    return null; 
+  }
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -30,6 +52,17 @@ const Navbar = () => {
           <Link href="/contact" className="hover:text-gray-400">
            Contact
           </Link>
+          {/* <div className="relative">
+            <button onClick={toggleDropdown} className="text-white">Dropdown</button>
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 bg-white text-black shadow-lg rounded-lg w-48">
+                <a href="/option1" className="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                <a href="/option2" className="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                <a href="/option3" className="block px-4 py-2 hover:bg-gray-200">Option 3</a>
+              </div>
+            )}
+          </div> */}
+
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="focus:outline-none">
