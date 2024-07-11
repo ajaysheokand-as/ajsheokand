@@ -47,14 +47,14 @@ const Invoices: React.FC = () => {
         onSearch={handleSearch}
         header={header}
       />
-      <div className="flex justify-between items-center mt-4">
-        {/* <Pagination
+      {/* <div className="flex justify-between items-center mt-4">
+        <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
-        /> */}
+        />
         
-      </div>
+      </div> */}
     </div>
   );
 };
