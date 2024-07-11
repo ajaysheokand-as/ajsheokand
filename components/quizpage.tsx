@@ -306,7 +306,7 @@ const QuizPage = () => {
                 )}
               </div>
               <div className="mt-4 flex justify-around">
-                {answers && (
+                {answers.length > 3 && (
                   <button
                     className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
                     onClick={checkResult}
