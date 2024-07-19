@@ -150,7 +150,7 @@ const QuizPage = () => {
   }, [studentDetails?.noOfQues, result]);
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row justify-around items-center p-8">
+    <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row justify-around items-center p-2 md:p-8">
       {showPopup && (
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
           <h3 className="text-xl font-bold mb-4">Enter Your Details</h3>
@@ -222,7 +222,7 @@ const QuizPage = () => {
       )}
       {!showPopup && !showCertificate && (
         <>
-          <div className="flex-1 bg-white p-8 rounded-lg shadow-md mr-4 mb-4 md:mb-0">
+          <div className="flex-1 bg-white  p-8 rounded-lg shadow-md md:mr-4 mb-4 md:mb-0">
             <h2 className="text-2xl font-bold mb-4">
               Question {currentQuestion + 1} of {currentTestQuestion?.length}
             </h2>
@@ -312,7 +312,7 @@ const QuizPage = () => {
               )}
             </div>
           </div>
-          <div className="flex-1 bg-white p-8 rounded-lg shadow-md ml-4">
+          <div className="flex-1 bg-white p-8 rounded-lg shadow-md sm:ml-4">
             <h3 className="text-xl font-bold mb-2">Question Status</h3>
             <div className="flex flex-wrap">
               {currentTestQuestion.map((_, index) => (
