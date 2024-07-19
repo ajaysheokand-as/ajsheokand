@@ -27,7 +27,7 @@ const QuizPage = () => {
       const res = await axios.post("/api/users", studentDetails);
 
       if (res.data.success) {
-        console.log("Success API Call");
+        // console.log("Success API Call");
       } else {
         console.error(res.data.error);
       }
@@ -49,7 +49,7 @@ const QuizPage = () => {
       const res = await axios.post("/api/test", data);
 
       if (res.data.success) {
-        console.log("Success API Call");
+        // console.log("Success API Call");
       } else {
         console.error(res.data.error);
       }
@@ -59,12 +59,12 @@ const QuizPage = () => {
   };
 
   const getData = async () => {
-    console.log("This is user details", studentDetails);
+    // console.log("This is user details", studentDetails);
     try {
       const res = await axios.get("/api/users");
 
       if (res.data.success) {
-        console.log("Success API Call", res.data);
+        // console.log("Success API Call", res.data);
       } else {
         console.error(res.data.error);
       }
@@ -150,7 +150,7 @@ const QuizPage = () => {
   }, [studentDetails?.noOfQues, result]);
 
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-around items-center p-8">
+    <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row justify-around items-center p-8">
       {showPopup && (
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
           <h3 className="text-xl font-bold mb-4">Enter Your Details</h3>
@@ -222,7 +222,7 @@ const QuizPage = () => {
       )}
       {!showPopup && !showCertificate && (
         <>
-          <div className="flex-1 bg-white p-8 rounded-lg shadow-md mr-4">
+          <div className="flex-1 bg-white p-8 rounded-lg shadow-md mr-4 mb-4 md:mb-0">
             <h2 className="text-2xl font-bold mb-4">
               Question {currentQuestion + 1} of {currentTestQuestion?.length}
             </h2>
@@ -318,13 +318,14 @@ const QuizPage = () => {
               {currentTestQuestion.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-8 h-8 m-3 flex items-center justify-center rounded-full text-white font-bold ${
+                  className={`w-8 h-8 m-3 flex items-center justify-center rounded-full text-white font-bold cursor-pointer ${
                     answers[index] !== undefined
                       ? "bg-green-500"
                       : skipped[index]
                       ? "bg-yellow-500"
                       : "bg-red-500"
                   }`}
+                  onClick={() => handleQuestionNavigation(index)}
                 >
                   {index + 1}
                 </div>
@@ -334,44 +335,28 @@ const QuizPage = () => {
         </>
       )}
       {showCertificate && (
-        // <div className="mt-4 bg-white p-8 rounded-lg shadow-md">
-        //   <h3 className="text-xl font-bold mb-4">Certificate</h3>
-        //   <p>Name: {studentDetails.name}</p>
-        //   <p>Score: {result.score}</p>
-        //   <p>Percentage: {result.percentage}%</p>
-        //   <p>Date: {new Date().toLocaleDateString()}</p>
-        //   <button
-        //     className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-4"
-        //     onClick={checkResult}
-        //   >
-        //     Try Again
-        //   </button>
-        // </div>
         <div className="bg-white p-10 rounded-lg shadow-md text-center max-w-xl">
-        <h1 className="text-4xl font-bold mb-6">Certificate of Achievement</h1>
-        <p className="text-xl mb-4">Date: {new Date().toLocaleDateString()}</p>
-        <p className="text-xl mb-4">This certifies that</p>
-        <p className="text-3xl font-bold mb-4">{studentDetails?.name}</p>
-        <p className="text-xl mb-4">has successfully completed the MCQ test with the following results:</p>
-        <div className="text-left mb-6">
-          <p className="text-lg mb-2"><strong>Email:</strong> {studentDetails?.email}</p>
-          <p className="text-lg mb-2"><strong>Phone:</strong> {studentDetails?.phone}</p>
-          <p className="text-lg mb-2"><strong>Number of Ques.</strong> {studentDetails?.noOfQues} minutes</p>
-          {/* <p className="text-lg mb-2"><strong>Marks Got</strong> {result.score}</p> */}
-          {/* <p className="text-lg mb-2"><strong>Percentage is</strong> {result.percentage}%</p> */}
-          {/* <p className="text-lg mb-2"><strong>got</strong>  </p> */}
-        </div>
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h3 className="text-xl font-bold mb-2">Got {result.score} Marks</h3>
-          <p className="text-lg whitespace-pre-wrap">{result.percentage}%</p>
-        </div>
-           <button
+          <h1 className="text-4xl font-bold mb-6">Certificate of Achievement</h1>
+          <p className="text-xl mb-4">Date: {new Date().toLocaleDateString()}</p>
+          <p className="text-xl mb-4">This certifies that</p>
+          <p className="text-3xl font-bold mb-4">{studentDetails?.name}</p>
+          <p className="text-xl mb-4">has successfully completed the MCQ test with the following results:</p>
+          <div className="text-left mb-6">
+            <p className="text-lg mb-2"><strong>Email:</strong> {studentDetails?.email}</p>
+            <p className="text-lg mb-2"><strong>Phone:</strong> {studentDetails?.phone}</p>
+            <p className="text-lg mb-2"><strong>Number of Ques.</strong> {studentDetails?.noOfQues} minutes</p>
+          </div>
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <h3 className="text-xl font-bold mb-2">Got {result.score} Marks</h3>
+            <p className="text-lg whitespace-pre-wrap">{result.percentage}%</p>
+          </div>
+          <button
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-4"
             onClick={checkResult}
           >
             Try Again
           </button>
-      </div>
+        </div>
       )}
     </div>
   );
