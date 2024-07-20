@@ -58,20 +58,20 @@ const QuizPage = () => {
     }
   };
 
-  const getData = async () => {
-    // console.log("This is user details", studentDetails);
-    try {
-      const res = await axios.get("/api/users");
+  // const getData = async () => {
+  //   // console.log("This is user details", studentDetails);
+  //   try {
+  //     const res = await axios.get("/api/users");
 
-      if (res.data.success) {
-        // console.log("Success API Call", res.data);
-      } else {
-        console.error(res.data.error);
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
+  //     if (res.data.success) {
+  //       // console.log("Success API Call", res.data);
+  //     } else {
+  //       console.error(res.data.error);
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
 
   const getRandomQuestions = () => {
     const shuffledQuestions = [...hartronQuestions].sort(
@@ -146,7 +146,7 @@ const QuizPage = () => {
 
   useEffect(() => {
     setCurrentTestQuestion(getRandomQuestions());
-    getData();
+    // getData();
   }, [studentDetails?.noOfQues, result]);
 
   return (
