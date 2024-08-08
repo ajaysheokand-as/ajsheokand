@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "start": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -14,16 +13,19 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@types/mongoose": "^5.11.97",
     "axios": "^1.7.2",
+    "child_process": "^1.0.2",
     "framer-motion": "^11.2.11",
     "mongoose": "^8.4.4",
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-modal": "^3.16.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
